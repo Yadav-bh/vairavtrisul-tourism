@@ -1,1 +1,199 @@
-<h1>Tourism Website Working</h1>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tourism - Vairav Trisul (Adventure)</title>
+  <meta name="description" content="Adventure travel in Nepal — mountains, trails, and epic tours.">
+
+  <style>
+    :root{--accent:#ff6b35;--dark:#0b0f14;--muted:#9aa5b1}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:#e6eef6;background:linear-gradient(180deg,#071019 0%, #08131a 100%);}
+    a{color:var(--accent);text-decoration:none}
+    header{padding:28px 32px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,#16202a,#0c1b24);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700}
+    nav a{margin-left:18px;color:#cfe6ff;font-weight:600}
+
+    /* hero */
+    .hero{min-height:64vh;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:28px 6vw}
+    .hero-left h1{font-size:44px;margin:0 0 12px;color:#fff;line-height:1.05}
+    .hero-left p{color:var(--muted);max-width:64ch}
+    .cta{margin-top:18px}
+    .btn{background:linear-gradient(90deg,var(--accent),#ff8f5a);border:none;padding:12px 18px;border-radius:10px;color:#061018;font-weight:700;cursor:pointer}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.12));padding:18px;border-radius:12px;backdrop-filter: blur(6px);box-shadow: 0 6px 18px rgba(2,8,15,0.6);color:#e7f6ff}
+
+    .hero-right{position:relative}
+    .slider{width:100%;height:420px;border-radius:12px;overflow:hidden}
+    .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.02);transition:all .9s cubic-bezier(.2,.9,.3,1)}
+    .slide.show{opacity:1;transform:scale(1)}
+    .slide .meta{position:absolute;left:14px;bottom:14px;background:linear-gradient(180deg, rgba(6,8,10,0.6), rgba(6,8,10,0.35));padding:10px;border-radius:8px}
+    .dots{display:flex;gap:8px;justify-content:center;margin-top:12px}
+    .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.12);cursor:pointer}
+    .dot.active{background:var(--accent)}
+
+    /* sections */
+    section{padding:48px 6vw}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .dest{padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));border-radius:12px}
+    .dest img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+    .package{display:flex;flex-direction:column;gap:8px}
+
+    footer{padding:28px 6vw;border-top:1px solid rgba(255,255,255,0.03);color:var(--muted)}
+
+    /* responsive */
+    @media (max-width:900px){.hero{grid-template-columns:1fr;min-height:60vh}.hero-right{order:2}.hero-left{order:1}.hero-left h1{font-size:32px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">VT</div>
+      <div>
+        <div style="font-weight:800;color:#fff">Vairav Trisul</div>
+        <div style="font-size:12px;color:var(--muted)">Adventure Travel — Nepal</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#destinations">Destinations</a>
+      <a href="#packages">Packages</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <h1>High mountains. Deep trails. Epic stories.</h1>
+        <p>Join small-group trekking and adventure tours across the Himalayas. Local guides, sustainable trips, and carefully crafted itineraries for every level of explorer.</p>
+        <div class="cta">
+          <button class="btn" onclick="document.getElementById('packages').scrollIntoView({behavior:'smooth'})">Explore Packages</button>
+        </div>
+        <div style="margin-top:18px;color:var(--muted)">📍 Based in Nepal — Languages: English, Nepali</div>
+      </div>
+
+      <div class="hero-right">
+        <div class="card">
+          <div class="slider" id="slider">
+            <div class="slide show" style="background-image:url('https://images.unsplash.com/photo-1508264165352-258a6f0d6f6a?auto=format&fit=crop&w=1600&q=60')">
+              <div class="meta">Annapurna Range — 8 days</div>
+            </div>
+            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=60')">
+              <div class="meta">Everest Base Camp — Classic Trek</div>
+            </div>
+            <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=1600&q=60')">
+              <div class="meta">Mustang — Mystery Trails</div>
+            </div>
+          </div>
+          <div class="dots" id="dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="destinations">
+      <h2 style="color:#fff;margin:0 0 12px">Top Destinations</h2>
+      <div class="grid">
+        <article class="dest">
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=60" alt="Pokhara">
+          <h3 style="margin:8px 0 0;color:#fff">Pokhara</h3>
+          <p style="color:var(--muted)">Lake city, paragliding, and stunning mountain views — perfect for short trips.</p>
+        </article>
+
+        <article class="dest">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60" alt="Mustang">
+          <h3 style="margin:8px 0 0;color:#fff">Mustang</h3>
+          <p style="color:var(--muted)">Ancient Tibetan culture and lunar landscapes — a photographer's paradise.</p>
+        </article>
+
+        <article class="dest">
+          <img src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=1200&q=60" alt="Kathmandu">
+          <h3 style="margin:8px 0 0;color:#fff">Kathmandu</h3>
+          <p style="color:var(--muted)">History, temples, and vibrant street life — the cultural gateway to Nepal.</p>
+        </article>
+
+        <article class="dest">
+          <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=1200&q=60" alt="Chitwan">
+          <h3 style="margin:8px 0 0;color:#fff">Chitwan</h3>
+          <p style="color:var(--muted)">Wildlife safaris and rivers — great for family-friendly adventure.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="packages">
+      <h2 style="color:#fff;margin:0 0 12px">Popular Adventure Packages</h2>
+      <div class="grid">
+        <div class="package card">
+          <h3 style="margin:0;color:#fff">Annapurna Circuit — 12 days</h3>
+          <p style="color:var(--muted)">Guided trek, accommodation, local meals, and experienced porter service.</p>
+          <div style="margin-top:auto;display:flex;gap:8px;align-items:center">
+            <strong style="color:#fff">Price:</strong><span style="color:var(--accent);font-weight:700">USD 799</span>
+            <button class="btn" style="margin-left:auto" onclick="book('Annapurna Circuit')">Book Now</button>
+          </div>
+        </div>
+
+        <div class="package card">
+          <h3 style="margin:0;color:#fff">Everest Base Camp — 14 days</h3>
+          <p style="color:var(--muted)">Experienced guides, tea-house stays, and acclimatization days included.</p>
+          <div style="margin-top:auto;display:flex;gap:8px;align-items:center">
+            <strong style="color:#fff">Price:</strong><span style="color:var(--accent);font-weight:700">USD 1199</span>
+            <button class="btn" style="margin-left:auto" onclick="book('Everest Base Camp')">Book Now</button>
+          </div>
+        </div>
+
+        <div class="package card">
+          <h3 style="margin:0;color:#fff">Mustang Cultural Trek — 10 days</h3>
+          <p style="color:var(--muted)">Permits included. Explore desert canyons and ancient monasteries.</p>
+          <div style="margin-top:auto;display:flex;gap:8px;align-items:center">
+            <strong style="color:#fff">Price:</strong><span style="color:var(--accent);font-weight:700">USD 999</span>
+            <button class="btn" style="margin-left:auto" onclick="book('Mustang Cultural Trek')">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 style="color:#fff;margin:0 0 12px">Contact & Booking</h2>
+      <div class="card" style="max-width:900px">
+        <p style="color:var(--muted)">Write to us for custom itineraries or questions. We respond within 24 hours.</p>
+        <form onsubmit="handleContact(event)">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <input placeholder="Your name" id="name" required style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff">
+            <input placeholder="Email or phone" id="email" required style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff">
+          </div>
+          <textarea id="message" placeholder="Tell us what you want..." required style="width:100%;margin-top:10px;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff"></textarea>
+          <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
+            <button class="btn" type="submit">Send Message</button>
+            <div style="color:var(--muted);font-size:13px">Or mail us: <a href="mailto:info@vairavtrisul.com">info@vairavtrisul.com</a></div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center">
+      <div>© <strong style="color:#fff">Vairav Trisul</strong> — Nepal Adventure</div>
+      <div style="color:var(--muted)">Built with ❤️ • <a href="#packages">View Packages</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // simple slider
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dotsEl = document.getElementById('dots');
+    let idx = 0;
+    slides.forEach((s,i)=>{
+      const d = document.createElement('div');d.className='dot';if(i===0)d.classList.add('active');d.addEventListener('click',()=>go(i));dotsEl.appendChild(d);
+    });
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    function show(n){slides.forEach((s,i)=>{s.classList.toggle('show',i===n);dots[i].classList.toggle('active',i===n)})}
+    function go(n){idx=n;show(idx)}
+    setInterval(()=>{idx=(idx+1)%slides.length;show(idx)},5000);
+
+    function book(name){alert('Booking request sent for: '+name+' \nWe will contact you soon.');}
+    function handleContact(e){e.preventDefault();const data={name:document.getElementById('name').value,email:document.getElementById('email').value,message:document.getElementById('message').value};alert('Thanks '+data.name+" — we received your message.\nEmail/phone: "+data.email);}
+  </script>
+</body>
+</html>
